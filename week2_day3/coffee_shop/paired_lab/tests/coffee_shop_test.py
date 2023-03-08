@@ -7,8 +7,8 @@ class TestCoffeeShop(unittest.TestCase):
     def setUp(self):
         self.drink_1 = Drink("Latte", 7.5, 2)
         self.drink_2 = Drink("Mocha", 9, 3)
-        list_of_drinks = [self.drink_1, self.drink_2]
-        self.coffeeshop_1 = CoffeeShop("tarbucks", 200, list_of_drinks)
+        self.stock = {self.drink_1: 20, self.drink_2: 100}
+        self.coffeeshop_1 = CoffeeShop("tarbucks", 200, self.stock)
         self.customer_1 = Customer("Paul", 34, 100, 1)
         self.customer_2 = Customer("John", 23, 100, 6)
     def test_coffeeshop_has_a_name(self):
@@ -39,3 +39,7 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(3, self.customer_1.energy)
         self.assertEqual(92.5, self.customer_1.wallet)
         self.assertEqual(207.5, self.coffeeshop_1.till)
+    
+    def test_stock_value(self):
+        result = self.coffeeshop_1.stock_value(self.coffeeshop_1.stock)
+        self.assertEqual(1050 ,result)
