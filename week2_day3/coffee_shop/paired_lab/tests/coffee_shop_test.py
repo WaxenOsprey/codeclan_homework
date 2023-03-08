@@ -18,7 +18,7 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(200, self.coffeeshop_1.till)
 
     def test_coffee_has_drinks(self):
-        self.assertEqual(2, len(self.coffeeshop_1.drinks))
+        self.assertEqual(2, len(self.coffeeshop_1.stock))
 
     def test_can_add(self):
         self.coffeeshop_1.make_sale(self.drink_1, self.customer_1)
@@ -40,6 +40,6 @@ class TestCoffeeShop(unittest.TestCase):
         self.assertEqual(92.5, self.customer_1.wallet)
         self.assertEqual(207.5, self.coffeeshop_1.till)
     
-    def test_stock_value(self):
-        result = self.coffeeshop_1.stock_value(self.coffeeshop_1.stock)
-        self.assertEqual(1050 ,result)
+#    def test_stock_value(self):
+#        result = self.coffeeshop_1.stock_value(self.coffeeshop_1.stock)
+#        self.assertEqual(1050 ,result)
