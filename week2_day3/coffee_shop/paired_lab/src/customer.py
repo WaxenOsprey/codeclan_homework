@@ -9,4 +9,10 @@ class Customer:
         price = drink.price
         self.wallet -= price
 
+    def buy_food(self, food):
+        self.energy -= food.rejuvenation_level
+        self.wallet -= food.price
+    
+
+
           
