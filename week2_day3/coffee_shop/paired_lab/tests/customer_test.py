@@ -1,10 +1,11 @@
 from src.customer import Customer
 from src.drink import Drink
+from src.coffee_shop import CoffeeShop
 import unittest
 
 class TestCustomer(unittest.TestCase):
     def setUp(self):
-        self.customer_1 = Customer("Claire", 100)
+        self.customer_1 = Customer("Claire", 32, 100)
 
     def test_customer_has_name(self):
         self.assertEqual("Claire", self.customer_1.name)
