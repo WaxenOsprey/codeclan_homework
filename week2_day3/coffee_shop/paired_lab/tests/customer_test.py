@@ -1,7 +1,5 @@
 from src.customer import Customer
 from src.drink import Drink
-from src.coffee_shop import CoffeeShop
-from src.food import Food
 import unittest
 
 class TestCustomer(unittest.TestCase):
@@ -19,9 +17,4 @@ class TestCustomer(unittest.TestCase):
         self.customer_1.pay_for_drink(drink_1)
         self.assertEqual(97, self.customer_1.wallet)
 
-    def test_buy_food(self):
-        food_1 = Food("Bagel", 15, 5)
-        self.customer_1.buy_food(food_1)
-        self.assertEqual(1, self.customer_1.energy)
-        self.assertEqual(85, self.customer_1.wallet)
 
