@@ -40,6 +40,6 @@ class CoffeeShop:
 #            total_value += drink_prices[j] * item.value()
 #            j += 1
 #        return total_value
-#  
+#  DO LIST COMPREHENSION
 
             
