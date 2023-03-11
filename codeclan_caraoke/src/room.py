@@ -11,15 +11,16 @@ class Room:
         self.guest_list.append(guest)
         print()
         print()
-        print(f"{guest.name} checked in to {self.name}")
+        print(f"{guest.name} checked into {self.name}")
     
     def check_out(self, guest):
         self.guest_list.remove(guest)
         print()
-        print(f"{guest.name} checked out of {self.name}")
         print()
+        print(f"{guest.name} checked out of {self.name}")
 
     def add_song(self, song):
         self.songs_playlist.append(song)
         print()
-        print(f"'{song.title}' by {song.artist} has been added to {self.name}")
+        print()
+        print(f'"{song.title}"" by {song.artist} has been added to {self.name}')

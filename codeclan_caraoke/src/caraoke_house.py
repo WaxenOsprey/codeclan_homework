@@ -9,6 +9,7 @@ class CaraokeHouse:
     def open_room(self, room_name):
         new_room = Room(room_name)
         self.room_list.append(new_room)
-        print(f"{new_room.name} is now open")
+        print()
+        print(f"Welcome to the {self.name}! {new_room.name} is now open!")
 
 
