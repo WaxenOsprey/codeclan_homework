@@ -1,4 +1,5 @@
 from src.guest import *
+from src.song import *
 
 class Room:
     def __init__(self, name):
@@ -8,8 +9,17 @@ class Room:
     
     def check_in(self, guest):
         self.guest_list.append(guest)
-        for guest in self.guest_list:
-            print(f"Checked in:  {guest.name} to {self.name}")
+        print()
+        print()
+        print(f"{guest.name} checked in to {self.name}")
     
     def check_out(self, guest):
         self.guest_list.remove(guest)
+        print()
+        print(f"{guest.name} checked out of {self.name}")
+        print()
+
+    def add_song(self, song):
+        self.songs_playlist.append(song)
+        print()
+        print(f"'{song.title}' by {song.artist} has been added to {self.name}")
