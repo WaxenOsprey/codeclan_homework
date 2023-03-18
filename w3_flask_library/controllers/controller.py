@@ -3,6 +3,10 @@ from app import app
 from models.books import book_list, add_new_book
 from models.book import Book
 
+@app.route('/')
+def home():
+   return render_template('home.html')
+
 @app.route('/books')
 def index():
     return render_template('index.html', book_list=book_list)
