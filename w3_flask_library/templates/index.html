@@ -9,7 +9,10 @@
       <h2>{{ book.title }}</h2>
       <h3>{{ book.author }}</h3>
       <h4>{{ book.genre }}</h4>
-      <a href="/books//{{book_list.index(book)}}">Show Book</a>
+      <a href="/books/{{book_list.index(book)}}">Show Book</a>
+      <form action="/books/delete/{{book_list.index(book)}}" method="post">
+        <input type="submit" value="Delete Book">
+      </form>
     </div>
 {% endfor %}
 

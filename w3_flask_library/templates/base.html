@@ -3,25 +3,25 @@
       <title>CodeClan Library</title>
     </head>
     <body>
-        <ul>
-          <li><a href="/books">Home</a></li>
-        </ul>
-        <hr>
-        
-        {% block content %}{% endblock %}
+          <ul>
+            <li><a href="/books">Home</a></li>
+          </ul>
+          <hr>
+
+          {% block content %}{% endblock %}
 
 
-    <h2>Add Book</h2>
+      <h2>Add Book</h2>
 
-    <form action="/books" method="post">
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title">
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author">
-      <label for="genre">Genre</label>
-      <input type="text" name="genre" id="genre">
-      <input type="submit" value="Add Book">
-    </form>
-    
+      <form action="/books" method="post">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author">
+        <label for="genre">Genre</label>
+        <input type="text" name="genre" id="genre">
+        <input type="submit" value="Add Book">
+      </form>
+      
     </body>
 </html>
