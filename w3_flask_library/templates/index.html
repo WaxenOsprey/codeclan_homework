@@ -7,6 +7,7 @@
 {% for book in book_list %}
     <div class="book">
       <h2>{{ book.title }}</h2>
+      <hr class="bookline">
       <h3>{{ book.author }}</h3>
       <h4>{{ book.genre }}</h4>
       <a href="/books/{{book_list.index(book)}}">Show Book</a>

@@ -5,15 +5,13 @@
     </head>
     <body>
       <header class="home_header">
-          <ul>
-            <li><a href="/books">Home</a></li>
-          </ul>
+        <h1><a href="/books">CodeClan Library</a></h1>
           <hr>
       </header>
 
           {% block content %}{% endblock %}
 
-
+    <footer>
       <h2>Add Book</h2>
 
       <form action="/books" method="post">
@@ -25,6 +23,7 @@
         <input type="text" name="genre" id="genre">
         <input type="submit" value="Add Book">
       </form>
+    </footer>
       
     </body>
 </html>
