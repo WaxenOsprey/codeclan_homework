@@ -1,20 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-    <h1>Book</h1>
-
     <div class="book-container">
 
         <div class="book">
-            <h2>{{ book.title }}</h2>
-            <h3>{{ book.author }}</h3>
-            <h4>{{ book.genre }}</h4>
-            <!-- <h4>{{ book.checked_out }}</h4> -->
-            <input type="checkbox" id="checked_out" name="checked_out">
-            <label for="checked_out">checked out</label>
-            <!-- <h4>{{ book.available }}</h4> -->
-            
+            <div class="book-items">
+                <h1>{{ book.title }}</h1>
+                <hr>
+                <h3>{{ book.author }}</h3>
+                <h4>{{ book.genre }}</h4>
+                {% if book.checked_out %}
+                <p>Available: <span> &#9989;</span></p>
+                {% else %}
+                <p>Available: <span> &#10060;</span></p>
+                {% endif %}
+                <hr>
+            </div>
+            <p class="description">{{ book.description }}</p>      
         </div>
     </div>
 

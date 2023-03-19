@@ -6,11 +6,17 @@
 <div class="book-container">
 {% for book in book_list %}
     <div class="book">
-      <h2>{{ book.title }}</h2>
+      <a href="/books/{{book_list.index(book)}}">{{ book.title }}</a>
       <hr class="bookline">
       <h3>{{ book.author }}</h3>
       <h4>{{ book.genre }}</h4>
-      <a href="/books/{{book_list.index(book)}}">Show Book</a>
+      <div class="available">
+            {% if book.checked_out %}
+            <p>Available: <span> &#9989;</span></p>
+            {% else %}
+            <p>Available: <span> &#10060;</span></p>
+            {% endif %}
+      </div>
       <hr>
       <form action="/books/delete/{{book_list.index(book)}}" method="post">
         <input type="submit" value="Delete Book">
