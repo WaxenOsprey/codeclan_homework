@@ -52,10 +52,11 @@ header > h1 > a:active {
 
 .book {
     border-style: solid;
-    border-width: 10px;
+    border-width: 15px;
     border-color: #dc2153;
     padding: 10px;
     text-align: center;
+    margin: 10px;
 }
 
 .book > a {
