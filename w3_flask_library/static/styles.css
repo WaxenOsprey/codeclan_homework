@@ -2,8 +2,6 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-
-
 .home_header {
     height: 8rem;
     padding: 10px;
@@ -11,14 +9,18 @@
     display: flex;
     align-items: center;
     font-size: 2rem;
-    border: 5px; color: black;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
 }
 
 footer {
     height: 6rem;
     padding: 10px;
     background-color: #dc2153;
-    border: 5px; color: black;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
 }
 
 footer > h2 {
@@ -53,4 +55,20 @@ header > h1 > a:active {
 
 .bookline {
     color: #dc2153;
+}
+
+.all-books {
+    margin: 10px;
+}
+
+.home-banner {
+    height: 8rem;
+    padding: 10px;
+    background-color:  #dc2153;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    border-style: solid;
+    border-width: 10px;
+    border-color: black;
 }

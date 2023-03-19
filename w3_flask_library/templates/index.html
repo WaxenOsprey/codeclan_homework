@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>All Books</h1>
+<h1 class="all-books">All Books</h1>
 <div class="book-container">
 {% for book in book_list %}
     <div class="book">
@@ -11,6 +11,7 @@
       <h3>{{ book.author }}</h3>
       <h4>{{ book.genre }}</h4>
       <a href="/books/{{book_list.index(book)}}">Show Book</a>
+      <hr>
       <form action="/books/delete/{{book_list.index(book)}}" method="post">
         <input type="submit" value="Delete Book">
       </form>
