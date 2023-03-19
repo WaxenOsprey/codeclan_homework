@@ -30,12 +30,20 @@ def add_book():
    bookTitle = request.form['title']
    bookAuthor = request.form['author']
    bookGenre = request.form['genre']
-   newBook = Book(title=bookTitle, author=bookAuthor, genre=bookGenre)
-   add_new_book(newBook)
+   newBook = Book(title=bookTitle, author=bookAuthor, genre=bookGenre, checked_out = False)
+   add_new_book(book_list, newBook)
 
    return render_template('index.html', book_list=book_list)
 
 @app.route("/books/delete/<index>", methods=["POST"])
 def books_delete(index):
-    remove_book(int(index))
+    remove_book(book_list, int(index))
     return redirect("/books")
+
+
+# @app.route("/books/<index>", methods=["POST"])
+# def books_update(index):
+#     book = book_list[int(index)]
+#     checked_out = "checked_out" in request.form
+#     book.toggle_check_out(checked_out)
+#     return redirect("/books/" + index)

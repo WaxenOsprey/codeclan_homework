@@ -1,0 +1,12 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.home_header {
+    height: 4rem;
+    background-color:  #4584b1;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+}

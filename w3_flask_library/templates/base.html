@@ -1,12 +1,15 @@
 <html>
     <head>
+      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
       <title>CodeClan Library</title>
     </head>
     <body>
+      <header class="home_header">
           <ul>
             <li><a href="/books">Home</a></li>
           </ul>
           <hr>
+      </header>
 
           {% block content %}{% endblock %}
 
