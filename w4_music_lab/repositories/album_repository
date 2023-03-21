@@ -45,7 +45,7 @@ def select_all():
     
     for row in results:
         artist = artist_repository.select(row['artist_id'])
-        #create a new album object
+        #create a new album object 
         new_album = Album(
             row['title'],
             row['genre'],
@@ -65,33 +65,6 @@ def select_all():
 #       values =[id]
 #       run_sql(sql, values)
 
-# #save(task)
-# def save(task):
-#     sql = "INSERT INTO tasks (description, user_id, duration, completed) VALUES (%s, %s, %s, %s) RETURNING *"
-#     values = [task.description, task.user.id, task.duration, task.completed]
-#     results = run_sql(sql, values)
-#     id = results[0]['id']
-#     task.id = id
-#     return task
-
-# #select(id)
-# def select(id):
-#     task = None
-#     sql = "SELECT * FROM tasks WHERE id = %s"
-#     values = [id]
-#     results = run_sql(sql, values)
-
-#     if len(results) > 0:
-#         selected_task = results[0]
-#         user = user_repository.select(selected_task['user.id'])
-#         task = Task(
-#             selected_task['description'],
-#             user,
-#             selected_task['duration'],
-#             selected_task['completed'],
-#             selected_task['id']
-#         )
-#         return task
 
 # #update(task)
 # def update(task):
