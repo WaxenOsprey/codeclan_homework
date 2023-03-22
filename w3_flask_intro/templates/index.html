@@ -10,7 +10,7 @@
     <h1>Gummy Bear store</h1>
         <ul>
     {% for order in order_list %}
-        <li><a href="/order/{{ order_list.index(order) }}">Order #{{ order_list.index(order) }}</a>
+        <li><a href="/orders/{{ order_list.index(order) }}">Order #{{ order_list.index(order) }}</a>
             <ul>
                 <li>{{ order.order_date }}</li>
                 <li>{{ order.quantity }}</li>
