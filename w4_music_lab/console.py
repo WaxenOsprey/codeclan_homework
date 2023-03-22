@@ -19,6 +19,7 @@ album_repository.save(album2)
 album_repository.delete_all()
 artist_repository.delete_all()
 
+#returns all albums as 
 result = album_repository.select_all()
 
 for album in result:

@@ -41,10 +41,14 @@ def select(id):
 
 
 def select_all():
+    #set up an empty list to be returned
     albums = []
+    #create a string of SQL
     sql = "SELECT * FROM albums"
+    #send my string to the run_sql function in run_sql.py
     results = run_sql(sql)
-    
+
+    #translate dictionaries into objects (right now a list of dicts)    
     for row in results:
         artist = artist_repository.select(row['artist_id'])
         #create a new album object 
