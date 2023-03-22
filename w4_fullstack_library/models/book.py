@@ -1,7 +1,7 @@
 class Book:
 
-    def __init__(self, title, description, author, id=None):
+    def __init__(self, title, author, description, id=None):
         self.title = title
-        self.description = description
         self.author = author
+        self.description = description
         self.id = id

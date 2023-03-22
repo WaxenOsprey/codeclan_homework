@@ -13,3 +13,10 @@ CREATE TABLE books (
   description VARCHAR(255),
   author_id INT NOT NULL REFERENCES authors(id)
 );
+
+-- INSERT INTO authors (first_name, last_name) VALUES ('J. K. ', 'Rowling');
+-- INSERT INTO authors (first_name, last_name) VALUES ('T. C. ', 'Smout');
+-- INSERT INTO authors (first_name, last_name) VALUES ('Bernard ', 'Cornwall');
+-- INSERT INTO authors (first_name, last_name) VALUES ('Truman ', 'Capote');
+-- INSERT INTO authors (first_name, last_name) VALUES ('Chinua ', 'Achebe');
+

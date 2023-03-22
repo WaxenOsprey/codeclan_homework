@@ -1,5 +1,5 @@
 from db.run_sql import run_sql
-
+import pdb
 from models.book import Book
 from models.author import Author
 import repositories.author_repository as author_repository
@@ -7,6 +7,8 @@ import repositories.author_repository as author_repository
 
 def save(book):
     sql = "INSERT INTO books (title, author_id, description) VALUES (%s, %s, %s) RETURNING *"
+    #does the place holder need to be %i? 
+    
     values = [book.title, book.author.id, book.description]
     results = run_sql(sql, values)
     id = results[0]['id']
@@ -45,7 +47,7 @@ def select(id):
 
 
 def delete_all():
-    sql = "DELETE  FROM book"
+    sql = "DELETE  FROM books"
     run_sql(sql)
 
 
@@ -56,7 +58,7 @@ def delete(id):
 
 
 def update(book):
-    sql = "UPDATE books SET (title, author_id, description) = (%s, %s, %s, %s) WHERE id = %s"
+    sql = "UPDATE books SET (title, author_id, description) = (%s, %s, %s) WHERE id = %s"
     values = [book.title, book.author.id, book.description, book.id]
     run_sql(sql, values)
 
