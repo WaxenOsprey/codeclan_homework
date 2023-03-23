@@ -1,0 +1,17 @@
+Solar System 
+
+Build an app that allows a user to travel and explore the solar system.
+
+MVP
+
+- The app should allow the user to create (discover) new planets and edit their properties (god-mode).
+- The app should allow the user to travel from the sun to each planet and view information about the planet
+- The app should allow the user to destroy any planetary body
+
+Inspired (loosely) by games such as Elite Dangerous and Eve online.
+
+Possible Extensions
+
+- The app should allow the user to see a summary of their activities at the end of their visit
+- The app should be able to include moons in a many to one relationship with planets
+- Show distance to sun at each solar system object
