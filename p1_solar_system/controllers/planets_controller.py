@@ -15,7 +15,6 @@ def planets():
 @planets_blueprint.route("/planets/<id>", methods=['GET'])
 def show_planet(id):
     planet = planet_repository.select(id)
-    
     return render_template('planets/show.html', planet = planet) 
 
 
