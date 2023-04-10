@@ -6,7 +6,7 @@ function App() {
   const [tasks, setTask] = useState([
     { name: "Hoover", priority: "Low" },
     { name: "Practice coding", priority: "High"},
-    { name: "Cook dinner", priority: "Low"},
+    { name: "Cook dinner", priority: "High"},
   ]);
 
   const [newTask, setNewTask] = useState("");
@@ -20,18 +20,14 @@ function App() {
   const taskNodes = tasks.map((task, index) => {
     const priorityStyle = {
       borderColor: task.priority === "High" ? "red" : "green",
-      color: task.priority === "High" ? "red" : "green",
-
+      color: task.priority === "High" ? "red" : "black",
       borderWidth: "5px",
       borderStyle: "solid"
-
     }
-    
-    
     return(
       <li key={index} style={priorityStyle}>
-      <span> {task.name}: </span>
-      <span> {task.priority} priority</span></li>
+      <span> {task.name} </span>
+      </li>
     )
   })
 

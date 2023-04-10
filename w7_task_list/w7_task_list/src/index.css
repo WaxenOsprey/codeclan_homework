@@ -16,6 +16,7 @@ ul {
 }
 li {
   margin: 20px 0;
+  font-size: 24px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
