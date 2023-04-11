@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import FilmList from "../components/FilmList"
+import FilmForm from "../components/FilmForm";
 
 const FilmBox = () => {
 
@@ -29,8 +30,14 @@ const FilmBox = () => {
           name: "Captain Marvel",
           url: "https://www.imdb.com/title/tt4154664/?ref_=rlm"
         }
-      ])
+      ]
+    )
 
+      const addFilm = (submittedFilm) => {
+        submittedFilm.id = Date.now();
+        const updatedFilms = [...films, submittedFilm];
+        setFilms(updatedFilms)
+      }
       return (
         <>
         <div className="film-box">
@@ -38,7 +45,9 @@ const FilmBox = () => {
             <hr />
             <FilmList films={films}/>
             <hr />
-            <span><a href="https://www.imdb.com/calendar/?region=gb">View more upcoming releases >> </a></span>
+            <span><a href="https://www.imdb.com/calendar/?region=gb">View more upcoming releases  </a></span>
+            <h2>Add a Film:</h2>
+            <FilmForm onFilmSubmit={(film) => addFilm(film)}/>
         </div>
 
         </>
