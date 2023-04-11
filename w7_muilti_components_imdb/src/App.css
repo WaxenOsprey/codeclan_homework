@@ -1,0 +1,70 @@
+.film-box {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  margin: 40px;
+  padding: 15px;
+}
+
+li {
+  margin: 10px;
+  padding-left: 20px;
+  font-size: 24px;
+}
+
+li :visited {
+  text-decoration: none;
+  color :cornflowerblue
+}
+
+li :link {
+  text-decoration: none;
+  color :cornflowerblue
+
+}
+
+li :hover {
+  text-decoration: none;
+  color :cornflowerblue
+
+}
+
+li :active {
+  text-decoration: none;
+  color :cornflowerblue
+
+}
+
+span {
+  border-style: solid;
+  background-color: rgb(187 221 242);
+  padding: 20px;
+}
+
+span a {
+  font-size: 24px;
+}
+
+span a:visited {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+span a:link {
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+span a:hover{
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+span a:active{
+  text-decoration: none;
+  color: cornflowerblue;
+}
+
+
+
