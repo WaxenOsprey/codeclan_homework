@@ -1,55 +1,236 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.stocks-box {
-  background-color: aquamarine;
-}
-
-.stocks-list {
-  background-color: cornflowerblue;
-}
-
-.stock {
-  background-color: darkgreen;
-}
-
-.stock img {
+.watched-coin img {
   width: 50px;
   height: 50px;
 }
+
+.coin-ticker {
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(105, 105, 105, 0.9);
+  padding: 10px;
+  border-radius: 20px;
+  margin-left: 10px;
+}
+
+.marquee {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee span {
+  padding-right: 30px;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.coin-ticker .positive {
+  color: greenyellow;
+}
+
+.coin-ticker .negative {
+  color: red;
+}
+
+.coin-info .positive {
+  color: greenyellow;
+}
+
+.coin-info .negative {
+  color: red;
+}
+
+.coin-watch-list {
+  margin: 20px;
+}
+
+.watchlist {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+
+.watchlist-item {
+  margin-right: 10px;
+}
+
+.svg-inline--fa {
+  width: 6em;
+  height: 6em;
+  margin-left: 75%;
+}
+
+.coin-info-name {
+  display: flex;  
+  flex-direction: row;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.coin-extra {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.coin-extra img {
+  width: 30%;
+  height: 30%;
+  margin: 20px;
+}
+
+.coin-extra-info {
+  text-align: right;
+  padding: 40px;
+  margin-left: 150px;
+  font-size: 18px;
+  background-color: rgb(169, 169, 169, 0.5);
+  border-radius: 20px;
+  
+
+
+}
+
+
+
+.coin-info-name {
+  font-weight: bolder;
+  margin-top: 20px;
+}
+
+.coin-details {
+  background-color: rgba(105, 105, 105, 0.7);
+  padding: 20px;
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.coin-detail-key {
+  color: black;
+}
+
+.coin-detail-value {
+  color: gold;
+}
+
+.App {
+  padding: 40px;
+  background-image: url(../public/stocks.jpg);
+  background-size: cover;
+}
+
+.buttons button {
+  border-radius: 20px;
+  background-color: rgba(105, 105, 105, 0.1);
+  margin: 20px;
+  padding: 10px;
+}
+
+.winners-button {
+  color: greenyellow;
+}
+
+.losers-button {
+  color: red;
+}
+
+.coins-box h1 {
+  color: goldenrod;
+  margin-left: 10px;
+}
+
+.movers-container {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+
+.winners ul {
+  list-style: none;
+  width: 100%;
+  border-radius: 20px;
+  background-color: rgba(105, 105, 105, 0.5);
+  margin: 20px;
+  padding: 10px;
+  color: greenyellow;
+}
+
+.losers ul {
+  list-style: none;
+  width: 100%;
+  border-radius: 20px;
+  background-color: rgba(105, 105, 105, 0.5);
+  margin: 20px;
+  padding: 10px;
+  color: red;
+}
+
+li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.winners ul li {
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.losers ul li {
+  animation: blink 2s ease-in-out infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.coins-list {
+  color: goldenrod;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px;
+}
+
+.coins-list h3 {
+  margin-right: 10px;
+}
+
+.coin-select {
+  width: 50%;
+  background-color: rgba(105, 105, 105);
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.coin-wrap {
+  display: flex;
+  justify-content: space-around;
+  justify-content: left;
+}
+
+

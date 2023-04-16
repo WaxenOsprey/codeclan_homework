@@ -8,11 +8,12 @@ if (coins.length === 0) return null
 return (
     <div className='coins-list'>
         <h3>Coins:</h3>
-            <select onChange={(event) => coinChoice(event.target.value)}>
+            <select className='coin-select' onChange={(event) => coinChoice(event.target.value)}>
                 {coins.map((coin) => {
                     return (    
                     <option key={coin.id} value={coin.name}>
-                        <Coin coin={coin} coinChoice={coinChoice}/>
+                        {coin.name}
+                        {/* <Coin coin={coin} coinChoice={coinChoice}/> */}
                     </option>
                     )
                 })}

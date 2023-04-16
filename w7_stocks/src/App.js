@@ -1,10 +1,11 @@
 import './App.css';
 import CoinsBox from './containers/CoinsBox';
+import ReactDOM from 'react-dom'
+
 
 function App() {
   return (
     <div className="App">
-      Hello World 
       <CoinsBox/>
     </div>
   );

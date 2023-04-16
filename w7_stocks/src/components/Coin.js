@@ -9,9 +9,11 @@ const Coin = ({coin, coinChoice}) => {
     return (
         <div className="coin">
             <p onClick={() => handleClick(coin.name)}>
-                {coin.name}
+                {coin.name} 
+                Current Price: ${coin.current_price} 
+                24h change: {coin.market_cap_change_percentage_24h}
             </p>
-            <img src={coin.image} alt="coin image" onClick={() => handleClick(coin.name)}/>
+            <img src={coin.image} alt="coin" onClick={() => handleClick(coin.name)}/>
         </div>
     )
 }
