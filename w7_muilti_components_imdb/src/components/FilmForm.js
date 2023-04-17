@@ -1,11 +1,16 @@
 import React, {useState} from "react";
 
+
+// onFilmSubmit is the function passed in as a prop that will be called when the form is submitted
 const FilmForm = ({onFilmSubmit}) => {
 
+    // two useState hooks which create variables hooks allow each component to manage its own state
     const [name, setName] = useState("");
     const [url, setUrl] = useState("");
 
+    // three event handlers that updates the var when the input elements change
     const handleNameChange = (e) => {
+        // updates the state with new value
         setName(e.target.value);
     }
 

@@ -6,7 +6,7 @@ const SongBox = () => {
 
     const [songs, setSongs] = useState([]);
 
-    // which state will be updated?
+    // what is triggering this? 
     useEffect(() => {
         console.log("useEffect triggered")
         getSongs();
