@@ -37,10 +37,9 @@ function MainContainer() {
             // new then chain passing in stories (array of story objects) and sorting them by score
             .then(stories => {
                 stories.sort((a, b) => b.score - a.score); 
-
-                
-            // sets state with stories and rerenders
-            setStories(stories);
+ 
+                // sets state with stories and rerenders
+                setStories(stories);
             })
     }, []);
 
