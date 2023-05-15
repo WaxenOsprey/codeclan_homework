@@ -20,6 +20,9 @@ const MongoClient = require('mongodb').MongoClient;
 const createRouter = require('./helpers/create_router.js');
 
 
+
+
+
 // These lines connect to a MongoDB database running on the local machine at the default port 27017,
 // create a reference to the "sightings" collection in a database named "birds", 
 // and use the custom router helper function to create RESTful routes for CRUD operations on the "sightings" collection at the endpoint "/api/sightings".
