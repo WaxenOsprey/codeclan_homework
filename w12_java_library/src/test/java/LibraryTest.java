@@ -8,6 +8,8 @@ public class LibraryTest {
     Library library;
     Book book1;
 
+    Borrower borrower;
+
     @Before
     public void setUp(){
         library = new Library();
@@ -28,6 +30,12 @@ public class LibraryTest {
     @Test
     public void hasCapacity(){
         assertEquals(100, library.getCapacity());
+    }
+
+    @Test
+    public void canLend(){
+        library.lendBook(book1);
+        assertEquals(1, borrower.getCollection());
     }
 
 }

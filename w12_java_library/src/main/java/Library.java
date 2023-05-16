@@ -23,5 +23,10 @@ public class Library {
         return this.capacity;
     }
 
+    public void lendBook(Borrower borrower, Book book){
+        borrower.borrowBook(book);
+        this.stock.remove(book);
+    }
+
 
 }
