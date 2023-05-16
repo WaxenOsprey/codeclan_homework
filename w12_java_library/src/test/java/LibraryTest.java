@@ -7,13 +7,12 @@ public class LibraryTest {
 
     Library library;
     Book book1;
-
     Borrower borrower;
 
     @Before
     public void setUp(){
         library = new Library();
-        book1 = new Book("Harry Potter and the Philosphers Stone", "J. K. Rowling", "Fantasy");
+        book1 = new Book("Harry Potter and the Philosophers Stone", "J. K. Rowling", "Fantasy");
     }
 
     @Test
@@ -34,7 +33,7 @@ public class LibraryTest {
 
     @Test
     public void canLend(){
-        library.lendBook(book1);
+        library.lendBook(borrower, book1);
         assertEquals(1, borrower.getCollection());
     }
 
