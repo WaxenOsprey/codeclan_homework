@@ -28,6 +28,6 @@ public class Manager extends Employee {
     }
 
     public Double payBonus(){
-        return (getEmployeeSalary() / 100) * 2;
+        return (getEmployeeSalary() / 100);
     }
 }
