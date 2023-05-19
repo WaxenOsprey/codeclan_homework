@@ -1,6 +1,9 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Date;
+
+
 import static org.junit.Assert.assertEquals;
 
 public class FlightTest {
@@ -22,13 +25,14 @@ public class FlightTest {
         pilot = new Pilot("Boomhauer", rank.CAPTAIN, "BH12345");
         cabinCrewMember1 = new CabinCrewMember("Dale Gribble", rank.FLIGHT_ATTENDANT);
         cabinCrewMember2 = new CabinCrewMember("Bill Dauterive", rank.FIRST_OFFICER);
-        flight = new Flight(pilot, plane, "AA123", "ARN", "EDI", "18:30");
+        Date departureTime = new Date();
+        flight = new Flight(pilot, plane, "AA123", "ARN", "EDI", departureTime);
 
         flight.addCabinCrewMember(cabinCrewMember1);
         flight.addCabinCrewMember(cabinCrewMember2);
 
         passenger1 = new Passenger("Hank Hill", 2);
-        flight.addPassenger(passenger1);
+        flight.addPassenger(passenger1, flight);
 
         flightManager = new FlightManager();
     }
@@ -60,7 +64,8 @@ public class FlightTest {
 
     @Test
     public void hasDepartureTime(){
-        assertEquals("18:30", flight.getDepartureTime());
+        Date departureTime = new Date();
+        assertEquals(departureTime, flight.getDepartureTime());
     }
 
     @Test
@@ -82,7 +87,7 @@ public class FlightTest {
     public void canNotBookPassengerIfFull(){
         int capacity = flight.plane.getPassengerCapacity();
         for (int i = 0; i < capacity; i++){
-            flight.addPassenger(passenger1);
+            flight.addPassenger(passenger1, flight);
         }
         assertEquals(600, flight.getBookedPassengers().size());
     }
@@ -110,6 +115,12 @@ public class FlightTest {
     @Test
     public void canCalculateRemainingBaggageSpace(){
         assertEquals(224800, flightManager.calculateRemainingBaggageSpace(flight), 0.0);
+    }
+
+    @Test
+    public void passengerCanSetFlight(){
+        passenger1.setFlight(flight);
+        assertEquals(flight.flightNumber, passenger1.getFlight().flightNumber);
     }
 
 

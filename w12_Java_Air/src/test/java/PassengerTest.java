@@ -22,6 +22,5 @@ public class PassengerTest {
         assertEquals(2, passenger1.getNumberOfBags(), 0.0);
     }
 
-
 }
 

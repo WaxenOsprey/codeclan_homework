@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Flight {
 
@@ -9,9 +10,9 @@ public class Flight {
     String flightNumber;
     String destination;
     String departureAirport;
-    String departureTime;
+    Date departureTime;
 
-    public Flight(Pilot pilot, Plane plane, String flightNumber, String destination, String departureAirport, String departureTime){
+    public Flight(Pilot pilot, Plane plane, String flightNumber, String destination, String departureAirport, Date departureTime){
         this.pilot = pilot;
         this.plane = plane;
         this.flightNumber = flightNumber;
@@ -50,7 +51,7 @@ public class Flight {
         return departureAirport;
     }
 
-    public String getDepartureTime() {
+    public Date getDepartureTime() {
         return departureTime;
     }
 
@@ -62,9 +63,37 @@ public class Flight {
         return plane.planeType.getPassenger_capacity() - bookedPassengers.size();
     }
 
-    public void addPassenger(Passenger newPassenger){
+    public void addPassenger(Passenger newPassenger, Flight flight){
         if (getAvailableSeats() > 0){
             bookedPassengers.add(newPassenger);
+            newPassenger.setFlight(flight);
+            setSeatNumber(newPassenger, flight);
         }
     }
-}
+
+    public void setSeatNumber(Passenger newPassenger, Flight flight){
+        int max = plane.planeType.getPassenger_capacity();
+        RandomNumberGenerator rng = new RandomNumberGenerator(max);
+
+        Boolean seatFound = false;
+        while (!seatFound){
+            int randomNumber = rng.getRandomNumber();
+            if (checkSeatAvailable(randomNumber, flight)){
+                newPassenger.setSeat(randomNumber);
+                seatFound = true;
+            }
+        }
+        
+    }
+
+    public Boolean checkSeatAvailable(int randomNumber, Flight flight) {
+        for (Passenger passenger : getBookedPassengers()) {
+            int seat = passenger.getSeat();
+            if (randomNumber == seat) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    }

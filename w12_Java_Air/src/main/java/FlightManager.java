@@ -1,7 +1,6 @@
 public class FlightManager {
 
     public FlightManager(){
-
     }
 
     public float calculateAvailableWeight(Flight flight){
