@@ -14,6 +14,8 @@ public class FlightTest {
     PlaneType planeType;
     Rank rank;
 
+    FlightManager flightManager;
+
     @Before
     public void before(){
         plane = new Plane(planeType.BOEING_747);
@@ -27,6 +29,8 @@ public class FlightTest {
 
         passenger1 = new Passenger("Hank Hill", 2);
         flight.addPassenger(passenger1);
+
+        flightManager = new FlightManager();
     }
 
     @Test
@@ -92,4 +96,21 @@ public class FlightTest {
     public void crewCanMakeAnnouncements(){
         assertEquals("Ladies and gentlemen, this is your flight attendant Dale Gribble speaking. Buckle up tight, 'cause we're about to embark on an adventure in the sky! Now, remember to keep your aluminum foil hats on for extra protection against those mind-reading government satellites. Sit back, relax, and enjoy the flight as we navigate the mysterious realms of the friendly skies. And don't worry, we have the best bug zappers on board to keep those pesky alien abductions at bay. Thank you for choosing this flight, and remember, the truth is out there!", cabinCrewMember1.makeAnnouncement());
     }
+
+    @Test
+    public void canCalculateBaggagePerPassenger(){
+        assertEquals(375, flightManager.calculateBaggagePerPassenger(flight), 0.0);
+    }
+
+    @Test
+    public void canCalculateTotalBaggageBooked(){
+        assertEquals(200, flightManager.calculateTotalBaggageBooked(flight), 0.0);
+    }
+
+    @Test
+    public void canCalculateRemainingBaggageSpace(){
+        assertEquals(224800, flightManager.calculateRemainingBaggageSpace(flight), 0.0);
+    }
+
+
 }
