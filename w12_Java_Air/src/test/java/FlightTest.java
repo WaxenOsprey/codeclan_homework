@@ -5,6 +5,7 @@ import java.util.Date;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class FlightTest {
 
@@ -14,6 +15,7 @@ public class FlightTest {
     CabinCrewMember cabinCrewMember1;
     CabinCrewMember cabinCrewMember2;
     Passenger passenger1;
+    Passenger passenger2;
     PlaneType planeType;
     Rank rank;
 
@@ -32,6 +34,8 @@ public class FlightTest {
         flight.addCabinCrewMember(cabinCrewMember2);
 
         passenger1 = new Passenger("Hank Hill", 2);
+        passenger2 = new Passenger("Peggy Hill", 2);
+
         flight.addPassenger(passenger1, flight);
 
         flightManager = new FlightManager();
@@ -121,6 +125,49 @@ public class FlightTest {
     public void passengerCanSetFlight(){
         passenger1.setFlight(flight);
         assertEquals(flight.flightNumber, passenger1.getFlight().flightNumber);
+    }
+
+    @Test
+    public void canAddPassenger(){
+        flight.addPassenger(passenger1, flight);
+        System.out.println(passenger1.getSeat());
+        assertEquals(flight.getBookedPassengers().size(), 2);
+    }
+
+    @Test
+    public void randomNumberGeneratorWorks(){
+        flight.addPassenger(passenger1, flight);
+        int seatA = passenger1.getSeat();
+        flight.addPassenger(passenger2, flight);
+        int seatB = passenger2.getSeat();
+        System.out.println(seatA);
+        System.out.println(seatB);
+        assertNotEquals(seatA, seatB);
+    }
+
+    //mostly experimental
+    @Test
+    public void findsLastSeat(){
+        int capacity = flight.getPlane().getPassengerCapacity();
+        System.out.println("capacity: " + capacity);
+        for (int i = 1; i < capacity; i++){
+            String name = "HankBot" + (i + 1);
+            Passenger passenger = new Passenger(name, 2); // Create a new passenger object
+            flight.addPassenger(passenger, flight);
+        }
+        System.out.println("available seats: " + flight.getAvailableSeats());
+        flight.addPassenger(passenger2, flight);
+
+        for (Passenger passenger : flight.getBookedPassengers()){
+            System.out.println("name: " + passenger.getName());
+            System.out.println("seat: " + passenger.getSeat());
+        }
+
+        System.out.println(flight.getBookedPassengers().get(599).getName());
+
+
+
+        assertEquals(0, flight.getAvailableSeats());
     }
 
 

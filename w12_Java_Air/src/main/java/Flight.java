@@ -73,11 +73,11 @@ public class Flight {
 
     public void setSeatNumber(Passenger newPassenger){
         int max = plane.planeType.getPassenger_capacity();
-        RandomNumberGenerator rng = new RandomNumberGenerator(max);
 
         //loop and regenerate a seat number until checkSeatAvailable() returns true, then setSeat;
         Boolean seatFound = false;
-        while (!seatFound){
+        while (!seatFound && getBookedPassengers().size() < plane.planeType.getPassenger_capacity()){
+            RandomNumberGenerator rng = new RandomNumberGenerator(max);
             int randomNumber = rng.getRandomNumber();
             if (checkSeatAvailable(randomNumber)){
                 newPassenger.setSeat(randomNumber);
@@ -85,7 +85,6 @@ public class Flight {
             }
         }
     }
-    //change to isSeatTaken and set above to checkSeatAvailable
     public Boolean checkSeatAvailable(int randomNumber) {
         for (Passenger passenger : getBookedPassengers()) {
             int seat = passenger.getSeat();
