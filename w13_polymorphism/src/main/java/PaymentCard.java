@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public abstract class PaymentCard {
+public abstract class PaymentCard implements IChargable{
 
     private double cardNumber;
     private int expiryDate;
@@ -19,7 +19,7 @@ public abstract class PaymentCard {
     public int getExpiryDate(){
         return this.expiryDate;
     }
-    
+
     public int getSecurityNumber(){
         return this.securityNumber;
     }

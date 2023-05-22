@@ -16,4 +16,19 @@ public class CreditCardTest {
     public void hasCardNumber(){
         assertEquals(123456789, creditCard.getCardNumber(), 0.0);
     }
+
+    @Test
+    public void hasExpiryDate(){
+        assertEquals(1524, creditCard.getExpiryDate(), 0.0);
+    }
+
+    @Test
+    public void hasSecurityNumber(){
+        assertEquals(234, creditCard.getSecurityNumber(), 0.0);
+    }
+
+    @Test
+    public void hasAvailableCredit(){
+        assertEquals(100.00, creditCard.getAvailableCredit(), 0.0);
+    }
 }
