@@ -28,7 +28,6 @@ public class CreditCard extends PaymentCard {
         return this.availableCredit;
     }
 
-    @Override
     public void charge(double purchaseAmount) {
         double interest = (purchaseAmount / 100) * 5.00f;
         double total = purchaseAmount + interest;

@@ -1,4 +1,3 @@
-import java.util.Date;
 
 public abstract class PaymentCard implements IChargeable{
 
@@ -23,11 +22,6 @@ public abstract class PaymentCard implements IChargeable{
     public int getSecurityNumber(){
         return this.securityNumber;
     }
-
-    public String logsTransaction(){
-        return "Transaction logged";
-    }
-
 
 }
 
