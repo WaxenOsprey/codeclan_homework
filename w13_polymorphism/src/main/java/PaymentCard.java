@@ -1,6 +1,6 @@
 import java.util.Date;
 
-public abstract class PaymentCard implements IChargable{
+public abstract class PaymentCard implements IChargeable{
 
     private double cardNumber;
     private int expiryDate;

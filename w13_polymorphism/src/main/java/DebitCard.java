@@ -35,7 +35,11 @@ public class DebitCard extends PaymentCard{
     }
 
     public void charge(double purchaseAmount){
-        log.add("Purchase amount: " + purchaseAmount);
+        logTransaction("Purchase amount: " + purchaseAmount);
+    }
+
+    private void logTransaction(String message) {
+        log.add(message);
     }
 
 

@@ -9,6 +9,7 @@ public class CreditCard extends PaymentCard {
     public CreditCard(double cardNumber, int expiryDate, int securityNumber, float availableCredit){
         super(cardNumber, expiryDate, securityNumber);
         this.availableCredit = availableCredit;
+        this.log = new ArrayList<>();
     }
 
     public double getCardNumber() {
@@ -29,9 +30,13 @@ public class CreditCard extends PaymentCard {
 
     @Override
     public void charge(double purchaseAmount) {
-        double interest = (double) (purchaseAmount / 100) * 5.00f;
+        double interest = (purchaseAmount / 100) * 5.00f;
         double total = purchaseAmount + interest;
         this.availableCredit -= total;
-        log.add(("Charged: " + total));
+        logTransaction(("Charged: " + total));
+    }
+
+    private void logTransaction(String message) {
+        log.add(message);
     }
 }

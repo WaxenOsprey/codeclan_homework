@@ -1,4 +1,4 @@
-public class GiftCard implements IChargable {
+public class GiftCard implements IChargeable {
 
     private float balance;
 
