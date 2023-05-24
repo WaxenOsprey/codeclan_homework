@@ -1,7 +1,4 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class VendingMachine {
 
@@ -9,12 +6,22 @@ public class VendingMachine {
     private ArrayList<Coin> coinFloat;
     private double currentAmount;
     private ArrayList<Product> inventory;
+    private ArrayList<Coin> validCoins;
+
 
     public VendingMachine(){
         this.insertedCoins = new ArrayList<>();
         this.coinFloat = new ArrayList<>();
         this.currentAmount = 0.0;
         this.inventory = new ArrayList<>();
+        this.validCoins = new ArrayList<>(Arrays.asList(
+                Coin.P5,
+                Coin.P10,
+                Coin.P20,
+                Coin.P50,
+                Coin.P100,
+                Coin.P200
+        ));
     }
 
     public ArrayList<Coin> getInsertedCoins() {
@@ -33,6 +40,10 @@ public class VendingMachine {
         return inventory;
     }
 
+    public ArrayList<Coin> getValidCoins() {
+        return validCoins;
+    }
+
     public void setCurrentAmount(double currentAmount) {
         this.currentAmount = currentAmount;
     }
@@ -46,12 +57,11 @@ public class VendingMachine {
     }
 
     public boolean validateCoin(Coin coin){
-        ArrayList<Integer> validCoins = new ArrayList<>(Arrays.asList(5, 10, 20, 50, 100, 200));
 
         if (coin.getValueInPence() == 1 || coin.getValueInPence() == 2){
             return false;
         }
-        return validCoins.stream().anyMatch(value -> value == coin.getValueInPence());
+        return validCoins.contains(coin);
     }
 
     public void insertCoin(Coin coin){
@@ -66,7 +76,7 @@ public class VendingMachine {
         currentAmount += coin.getValueInPence();
     }
 
-    public ArrayList<Coin> returnCoins(ArrayList insertedCoins){
+    public ArrayList<Coin> returnCoins(ArrayList<Coin> insertedCoins){
         ArrayList<Coin> returnedCoins = new ArrayList<>(insertedCoins);
         insertedCoins.clear();
         setCurrentAmount(0);
@@ -80,20 +90,42 @@ public class VendingMachine {
         insertedCoins.clear();
     }
 
-    public double calculateRemainingAmount(Product product){
+    public void calculateRemainingAmount(Product product){
         double remainingAmount = product.getPriceInPence() - getCurrentAmount();
-        return remainingAmount;
+        setCurrentAmount(remainingAmount);
+    }
+
+    public double calculateChange(Product product){
+        double change = getCurrentAmount() - product.getPriceInPence();
+        setCurrentAmount(change);
+        return change;
     }
 
     public Object selectProduct(Product product){
 
-        if(currentAmount >= product.getPriceInPence()){
+        if(getCurrentAmount() >= product.getPriceInPence()){
             collectCoins();
-            setCurrentAmount(0);
             removeProduct(product);
+            returnChange(calculateChange(product));
+            setCurrentAmount(0);
             return product;
         }
-        return calculateRemainingAmount(product);
+        calculateRemainingAmount(product);
+        return getCurrentAmount();
+    }
+
+    public void organiseChangeForEachCoin(Coin coin){
+        while (coin.getValueInPence() <= getCurrentAmount() && getCurrentAmount() > 0) {
+            getInsertedCoins().add(coin);
+            setCurrentAmount(currentAmount - coin.getValueInPence());
+        }
+    }
+
+    public ArrayList<Coin> returnChange(double changeTotal){
+        getValidCoins().stream()
+                .sorted(Comparator.reverseOrder())
+                .forEach(this::organiseChangeForEachCoin);
+        return returnCoins(getInsertedCoins());
     }
 
 }

@@ -12,6 +12,19 @@ public class VendingMachineTest {
     @Before
     public void before(){
         vendingMachine = new VendingMachine();
+        vendingMachine.addProduct(product.COLA);
+        vendingMachine.addProduct(product.CRISPS);
+        vendingMachine.addProduct(product.SWEET);
+
+        int i = 0;
+        while (i < 5){
+            vendingMachine.getCoinFloat().add(Coin.P200);
+            vendingMachine.getCoinFloat().add(Coin.P100);
+            vendingMachine.getCoinFloat().add(Coin.P50);
+            vendingMachine.getCoinFloat().add(Coin.P10);
+            vendingMachine.getCoinFloat().add(Coin.P5);
+            i ++;
+        }
     }
 
     @Test
@@ -21,7 +34,7 @@ public class VendingMachineTest {
 
     @Test
     public void hasCoinFloat(){
-        assertEquals(0, vendingMachine.getCoinFloat().size(), 0.0);
+        assertEquals(25, vendingMachine.getCoinFloat().size(), 0.0);
     }
 
     @Test
@@ -31,18 +44,16 @@ public class VendingMachineTest {
 
     @Test
     public void hasInventory(){
-        assertEquals(0, vendingMachine.getInventory().size(), 0.0);
+        assertEquals(3, vendingMachine.getInventory().size(), 0.0);
     }
 
     @Test
     public void canAddAndRemoveProducts(){
         vendingMachine.addProduct(product.COLA);
         vendingMachine.addProduct(product.CRISPS);
-        System.out.println(vendingMachine.getInventory());
-        assertEquals(2, vendingMachine.getInventory().size(), 0.0);
+        assertEquals(5, vendingMachine.getInventory().size(), 0.0);
         vendingMachine.removeProduct(product.CRISPS);
-        assertEquals(1, vendingMachine.getInventory().size(), 0.0);
-        System.out.println(vendingMachine.getInventory());
+        assertEquals(4, vendingMachine.getInventory().size(), 0.0);
     }
 
     @Test
@@ -83,7 +94,7 @@ public class VendingMachineTest {
         vendingMachine.insertCoin(Coin.P100);
         vendingMachine.insertCoin(Coin.P50);
         vendingMachine.collectCoins();
-        assertEquals(3, vendingMachine.getCoinFloat().size());
+        assertEquals(28, vendingMachine.getCoinFloat().size());
         assertEquals(0, vendingMachine.getInsertedCoins().size());
     }
 
@@ -102,5 +113,13 @@ public class VendingMachineTest {
         vendingMachine.addProduct(product.CRISPS);
         Object result = vendingMachine.selectProduct(product.CRISPS);
         assertEquals(40.0, result);
+    }
+
+    @Test
+    public void canGiveChange(){
+        vendingMachine.insertCoin(Coin.P100);
+        vendingMachine.insertCoin(Coin.P2);
+        vendingMachine.selectProduct(product.SWEET);
+        assertEquals(0, vendingMachine.getInsertedCoins().size(), 0.0);
     }
 }
