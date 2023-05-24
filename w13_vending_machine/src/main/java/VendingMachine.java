@@ -8,6 +8,8 @@ public class VendingMachine {
     private ArrayList<Product> inventory;
     private ArrayList<Coin> validCoins;
 
+    private ArrayList<Coin> coinReturn;
+
 
     public VendingMachine(){
         this.insertedCoins = new ArrayList<>();
@@ -22,6 +24,8 @@ public class VendingMachine {
                 Coin.P100,
                 Coin.P200
         ));
+        this.coinReturn = new ArrayList<>();
+
     }
 
     public ArrayList<Coin> getInsertedCoins() {
@@ -42,6 +46,10 @@ public class VendingMachine {
 
     public ArrayList<Coin> getValidCoins() {
         return validCoins;
+    }
+
+    public ArrayList<Coin> getCoinReturn() {
+        return coinReturn;
     }
 
     public void setCurrentAmount(double currentAmount) {
@@ -76,12 +84,11 @@ public class VendingMachine {
         currentAmount += coin.getValueInPence();
     }
 
-    public ArrayList<Coin> returnCoins(ArrayList<Coin> insertedCoins){
-        ArrayList<Coin> returnedCoins = new ArrayList<>(insertedCoins);
-        insertedCoins.clear();
-        setCurrentAmount(0);
-        return returnedCoins;
-    }
+//    public void returnCoins(ArrayList<Coin> insertedCoins){
+//        ArrayList<Coin> coinReturn = new ArrayList<>(insertedCoins);
+//        insertedCoins.clear();
+//        setCurrentAmount(0);
+//    }
 
     public void collectCoins(){
         for (int i = 0; i < insertedCoins.size(); i++){
@@ -116,16 +123,16 @@ public class VendingMachine {
 
     public void organiseChangeForEachCoin(Coin coin){
         while (coin.getValueInPence() <= getCurrentAmount() && getCurrentAmount() > 0) {
-            getInsertedCoins().add(coin);
+            getCoinReturn().add(coin);
             setCurrentAmount(currentAmount - coin.getValueInPence());
         }
     }
 
-    public ArrayList<Coin> returnChange(double changeTotal){
+    public void returnChange(double changeTotal){
         getValidCoins().stream()
                 .sorted(Comparator.reverseOrder())
                 .forEach(this::organiseChangeForEachCoin);
-        return returnCoins(getInsertedCoins());
+//        returnCoins(getCoinReturn());
     }
 
 }

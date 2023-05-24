@@ -2,6 +2,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.sql.SQLOutput;
+
 import static org.junit.Assert.assertEquals;
 
 public class VendingMachineTest {
@@ -79,14 +81,14 @@ public class VendingMachineTest {
         assertEquals(110, vendingMachine.getCurrentAmount(), 0.0);
     }
 
-    @Test
-    public void canReturnCoins(){
-        vendingMachine.insertCoin(Coin.P10);
-        vendingMachine.insertCoin(Coin.P100);
-        vendingMachine.returnCoins(vendingMachine.getInsertedCoins());
-        assertEquals(0, vendingMachine.getInsertedCoins().size(), 0.0);
-        assertEquals(0, vendingMachine.getCurrentAmount(), 0.0);
-    }
+//    @Test
+//    public void canReturnCoins(){
+//        vendingMachine.insertCoin(Coin.P10);
+//        vendingMachine.insertCoin(Coin.P100);
+//        vendingMachine.returnCoins(vendingMachine.getInsertedCoins());
+//        assertEquals(0, vendingMachine.getInsertedCoins().size(), 0.0);
+//        assertEquals(0, vendingMachine.getCurrentAmount(), 0.0);
+//    }
 
     @Test
     public void canCollectCoins(){
@@ -118,8 +120,11 @@ public class VendingMachineTest {
     @Test
     public void canGiveChange(){
         vendingMachine.insertCoin(Coin.P100);
+        vendingMachine.insertCoin(Coin.P10);
         vendingMachine.insertCoin(Coin.P2);
         vendingMachine.selectProduct(product.SWEET);
         assertEquals(0, vendingMachine.getInsertedCoins().size(), 0.0);
+        assertEquals(0, vendingMachine.getCurrentAmount(), 0.0);
+        System.out.println("Coins returned: " + vendingMachine.getCoinReturn());
     }
 }
